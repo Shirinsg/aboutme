@@ -1640,3 +1640,14 @@ a {
     word-break: break-word;
   }
 }
+
+/* Force movie/book title colors inside the card overlay */
+.project .desc .con h3 a,
+.project .desc .con h3 a:visited,
+.project .desc .con h3 a:focus {
+  color: #ffffff !important;
+}
+
+.project .desc .con h3 a:hover {
+  color: #f4f2ee !important; /* change this to whatever you want */
+}
