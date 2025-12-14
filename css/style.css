@@ -1618,3 +1618,25 @@ body.offcanvas {
 a {
   color: #5d5c65 !important;   /* pick your color */
 }
+
+/* Fix slider text being cut off on small screens */
+@media (max-width: 768px) {
+  #colorlib-hero .slider-text,
+  #colorlib-hero .slider-text-inner,
+  #colorlib-hero .desc {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+    text-align: center !important;
+  }
+
+  #colorlib-hero h3,
+  #colorlib-hero h4,
+  #colorlib-hero h5 {
+    white-space: normal !important;
+    word-break: break-word;
+  }
+}
