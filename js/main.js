@@ -112,10 +112,10 @@
 			var $this = $(this);
 
 			if ($('body').hasClass('offcanvas')) {
-				$this.removeClass('active');
+				$this.removeClass('active').attr('aria-expanded', 'false');
 				$('body').removeClass('offcanvas');
 			} else {
-				$this.addClass('active');
+				$this.addClass('active').attr('aria-expanded', 'true');
 				$('body').addClass('offcanvas');
 			}
 		});
@@ -154,7 +154,7 @@
 
 	var clickMenu = function() {
 
-		$('#navbar a:not([class="external"])').click(function(event){
+		$('#navbar a:not([class="external"]), #colorlib-hero a[data-nav-section]').click(function(event){
 			var section = $(this).data('nav-section'),
 				navbar = $('#navbar');
 
@@ -241,6 +241,11 @@
 
 	var stickyFunction = function() {
 
+		// sticky-kit isn't loaded on this site; skip instead of throwing.
+		if ( !$.fn.stick_in_parent ) {
+			return;
+		}
+
 		var h = $('.image-content').outerHeight();
 
 		if ($(window).width() <= 992 ) {
@@ -295,6 +300,28 @@
 		})
 	};
 
+	// Show the latest few news items and let visitors expand the rest.
+	var newsToggle = function() {
+		var visible = 6,
+			$items = $('#news-list > li'),
+			$btn = $('#news-toggle');
+
+		if ( $items.length <= visible ) {
+			return;
+		}
+
+		$items.slice(visible).addClass('news-hidden');
+		$btn.prop('hidden', false).on('click', function(){
+			var expanded = $btn.attr('aria-expanded') === 'true';
+			$items.slice(visible).toggleClass('news-hidden', expanded);
+			$btn.attr('aria-expanded', String(!expanded)).text(expanded ? 'Show all news' : 'Show less');
+		});
+	};
+
+	var copyrightYear = function() {
+		$('#year').text(new Date().getFullYear());
+	};
+
 	// Document on load.
 	$(function(){
 		fullHeight();
@@ -314,6 +341,8 @@
 		sliderMain();
 		stickyFunction();
 		owlCrouselFeatureSlide();
+		newsToggle();
+		copyrightYear();
 	});
 
 
