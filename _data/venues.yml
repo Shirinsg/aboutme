@@ -1,0 +1,7 @@
+# Venue badge links for publication abbreviations (optional).
+"ICLR":
+  url: https://iclr.cc/
+"NeurIPS":
+  url: https://neurips.cc/
+"ICML":
+  url: https://icml.cc/
