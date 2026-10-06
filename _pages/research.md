@@ -37,7 +37,7 @@ Before correcting for a shift, one has to know it is there. I develop methods th
 
 ### Diffusion and generative priors for inverse problems
 
-I work on using diffusion and other generative models as priors for imaging problems such as phase retrieval, Poisson denoising, and video restoration. This includes models that learn directly in the measurement domain.
+I work on using diffusion, flow-based, and other generative models as priors for imaging problems such as phase retrieval, Poisson denoising, and video restoration. This includes models that learn directly in the measurement domain, one-step posterior sampling for noisy measurements, and flow-based reconstruction through regularized minimization.
 
 <div class="publications">
 {% bibliography --group_by none --query @*[research=generative]* %}
